@@ -12,7 +12,7 @@ type ProductsData = {
 
 const productsData: ProductsData = {
   "Draft Boosters": [
-    { name: "Ravnica Remastered Draft", price: 130, image: "/images/ravnica_remastered_draft.png" },
+    { name: "Ravnica Remastered Draft", price: 1130, image: "/images/ravnica_remastered_draft.png" },
     { name: "Dominaria United Draft", price: 60, image: "/images/dominaria_united_draft.png" },
     { name: "Midnight Hunt Draft", price: 60, image: "/images/midnight_hunt_draft.png" },
   ],
