@@ -10,9 +10,10 @@ type ProductsData = {
   [category: string]: Product[];
 };
 
+// --- PRODUCTS ---
 const productsData: ProductsData = {
   "Draft Boosters": [
-    { name: "Ravnica Remastered Draft", price: 1130, image: "/images/ravnica_remastered_draft.png" },
+    { name: "Ravnica Remastered Draft", price: 130, image: "/images/ravnica_remastered_draft.png" },
     { name: "Dominaria United Draft", price: 60, image: "/images/dominaria_united_draft.png" },
     { name: "Midnight Hunt Draft", price: 60, image: "/images/midnight_hunt_draft.png" },
   ],
@@ -20,60 +21,9 @@ const productsData: ProductsData = {
     { name: "March Of The Machine Set", price: 100, image: "/images/march_of_the_machine_set.png" },
     { name: "Mystery Booster Convention", price: 150, image: "/images/mystery_booster_convention.png" },
   ],
-  "Play Boosters": [
-    { name: "Murders at Karlov Manor Play", price: 100, image: "/images/murders_at_karlov_manor_play.png" },
-  ],
-  "Collector Boosters": [
-    { name: "Murder at Karlov Manor Collector", price: 160, image: "/images/murder_at_karlov_manor_collector.png" },
-    { name: "Ravnica Remastered Collector", price: 420, image: "/images/ravnica_remastered_collector.png" },
-    { name: "Commander Masters Collector", price: 250, image: "/images/commander_masters_collector.png" },
-  ],
-  "Commander Decks": [
-    { name: "Final Fantasy — Counter Blitz", price: 30, image: "/images/counter_blitz.png" },
-    { name: "Final Fantasy — Limit Break", price: 40, image: "/images/limit_break.png" },
-    { name: "Final Fantasy — Scions & Spellcraft", price: 30, image: "/images/scions_spellcraft.png" },
-  ],
-  "Prerelease": [
-    { name: "Lord of the Rings Prerelease", price: 50, image: "/images/lord_of_the_rings_prerelease.png" },
-  ],
-  "Secret Lair": [
-    { name: "Non Foil - Outlaw Anthology Vol. 2: Sinister Scoundrels", price: 25, image: "/images/secret_lair_showcase_awbo_step_and_compleat.png" },
-    { name: "Non Foil - Prints of Darkness", price: 30, image: "/images/secret_lair_showcase_awbo_step_and_compleat.png" },
-    { name: "Non Foil - Princess Bride", price: 170, image: "/images/secret_lair_showcase_awbo_step_and_compleat.png" },
-    { name: "Non Foil - Life Breaks Free", price: 130, image: "/images/secret_lair_showcase_awbo_step_and_compleat.png" },
-    { name: "Non Foil - Optimus Prime vs Megatron", price: 50, image: "/images/secret_lair_showcase_awbo_step_and_compleat.png" },
-
-    { name: "Showcase AWBO Step and Compleat", price: 35, image: "/images/secret_lair_showcase_awbo_step_and_compleat.png" },
-    { name: "Traditional Foil - Doctor Who: Regeneration", price: 170, image: "/images/secret_lair_the_scorpion_god_traditional_foil.png" },
-    { name: "Traditional Foil - Just Add Milk: Tomb Raider", price: 140, image: "/images/secret_lair_the_scorpion_god_traditional_foil.png" },
-    { name: "Traditional Foil - Just Add Milk: Second Helpings", price: 35, image: "/images/secret_lair_the_scorpion_god_traditional_foil.png" },
-    { name: "Traditional Foil - The Scorpion God", price: 4, image: "/images/secret_lair_the_scorpion_god_traditional_foil.png" },
-    { name: "Traditional Foil - Not a Wolf", price: 40, image: "/images/not_a_wolf_traditional_foil.png" },
-    { name: "Rainbow Foil - SLxFallout Vault Boy", price: 40, image: "/images/secret_lair_slxfallout_vault_boy_rainbow_foil.png" },
-    { name: "Rainbow Foil - SLxD&D Exhibition o Adventure", price: 40, image: "/images/secret_lair_slxd_d_exhibition_o_adventure_rainbow.png" },
-    { name: "Rainbow Foil - Bloomburrow", price: 40, image: "/images/showcase_bloomburrow_rainbow_foil.png" },
-    { name: "Rainbow Foil - Phoebe Wahl", price: 20, image: "/images/phoebe_wahl_rainbow_foil.png" },
-    { name: "Rainbow Foil - Braindead: Staples", price: 30, image: "/images/secret_lair_x_braindead_staples.png" },
-    { name: "Rainbow Foil - Artist Series: Rovina Cal", price: 50, image: "/images/artist_series_rovena_cal_rainbow_foil.png" },
-    { name: "Rainbow Foil - Prismatic Nightmares", price: 40, image: "/images/not_a_wolf_traditional_foil.png" },
-  ],
-  "Secret Lair Decks": [
-    { name: "Angels: They're Just Like Us but Cooler and with Wings Deck", price: 400, image: "/images/angels_deck.png" },
-    { name: "From Cute to Brute Deck", price: 180, image: "/images/secret_lair_cute_to_brute_commander.png" },
-  ],
-  "Others": [
-    { name: "Dominaria United Jumpstart Boosters (3x)", price: 5, image: "/images/dominaria_united_jumpstart_boosters_3x.png" },
-    { name: "Murder at Karlov Manor Bundle", price: 25, image: "/images/murder_at_karlov_manor_bundle.png" },
-    { name: "Pioneer Challenger Decks", price: 100, image: "/images/pioneer_challenger_decks.png" },
-    { name: "Crimson Vow Gift Bundle", price: 40, image: "/images/crimson_vow_gift_bundle.png" },
-    { name: "Commander Collection: Green - Premium", price: 50, image: "/images/Commander_Collection_Green_Premium.png" },
-  ],
-  "Special": [
-    { name: "30th Anniversary", price: 1000, image: "/images/30th_anniversary.png" },
-  ],
 };
 
-// --- PRODUCT INDICES FOR URL ENCODING ---
+// --- PRODUCT INDEXING ---
 const productIndex: { [name: string]: number } = {};
 const productNames: string[] = [];
 let idx = 0;
@@ -83,7 +33,7 @@ Object.values(productsData).flat().forEach((p) => {
   idx++;
 });
 
-// --- ENCODE / DECODE FUNCTIONS ---
+// --- ENCODE/DECODE CART ---
 const encodeCart = (quantities: { [name: string]: number }) => {
   const entries = Object.entries(quantities).filter(([_, qty]) => qty > 0);
   const pairs = entries.map(([name, qty]) => `${productIndex[name]}:${qty}`);
@@ -113,18 +63,16 @@ const App = () => {
 
   const [quantities, setQuantities] = useState<{ [key: string]: number }>(getInitialQuantities());
   const [copySuccess, setCopySuccess] = useState<string>("");
+  const [discount, setDiscount] = useState<number>(0);
   const [collapsed, setCollapsed] = useState<{ [cat: string]: boolean }>(() => {
     const initial: { [cat: string]: boolean } = {};
     Object.keys(productsData).forEach((cat) => (initial[cat] = false));
     return initial;
   });
 
-  // --- LOAD CART FROM URL ---
   useEffect(() => {
     document.body.style.backgroundColor = "#121212";
     document.body.style.margin = "0";
-    document.body.style.height = "100%";
-    document.documentElement.style.height = "100%";
     document.body.style.color = "#eee";
     document.body.style.fontFamily = "Arial, sans-serif";
 
@@ -155,16 +103,6 @@ const App = () => {
     setTimeout(() => setCopySuccess(""), 4000);
   };
 
-  const clearCategory = (category: string) => {
-    setQuantities((prev) => {
-      const newQuantities = { ...prev };
-      productsData[category].forEach((item) => (newQuantities[item.name] = 0));
-      return newQuantities;
-    });
-    setCopySuccess(`Category "${category}" cleared!`);
-    setTimeout(() => setCopySuccess(""), 4000);
-  };
-
   const toggleCollapse = (category: string) => {
     setCollapsed((prev) => ({ ...prev, [category]: !prev[category] }));
   };
@@ -178,64 +116,59 @@ const App = () => {
       items.forEach(({ name, price }) => {
         const qty = quantities[name] || 0;
         if (qty > 0) {
-          const lineTotal = qty * price;
+          const discounted = price * (1 - discount / 100);
+          const lineTotal = qty * discounted;
           totalQty += qty;
           totalPrice += lineTotal;
-          lines.push(`${qty}x ${name} - $${price.toFixed(2)} each | $${lineTotal.toFixed(2)} total`);
+          lines.push(
+            `${qty}x ${name} - Orig: $${price.toFixed(2)} | ${discount}% Off: $${discounted.toFixed(2)} each | $${lineTotal.toFixed(2)} total`
+          );
         }
       });
     });
 
-    lines.push(`\nTotal Quantity: ${totalQty}\nTotal Price: $${totalPrice.toFixed(2)}`);
-    return lines.join("\n");
-  };
-
-  const generateQuantityOutput = () => {
-    const lines: string[] = [];
-    Object.entries(productsData).forEach(([cat, items]) => {
-      items.forEach(({ name }) => {
-        const qty = quantities[name] || 0;
-        if (qty > 0) lines.push(`${qty}x ${name}`);
-      });
-    });
+    lines.push(`\nTotal Quantity: ${totalQty}\nTotal Price (with ${discount}% off): $${totalPrice.toFixed(2)}`);
     return lines.join("\n");
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(generateOutput()).then(() => setCopySuccess("Copied!"), () =>
-      setCopySuccess("Failed to copy")
+    navigator.clipboard.writeText(generateOutput()).then(
+      () => setCopySuccess("Copied!"),
+      () => setCopySuccess("Failed to copy")
     );
-    setTimeout(() => setCopySuccess(""), 4000);
-  };
-
-  const handleCopyQuantities = () => {
-    navigator.clipboard.writeText(generateQuantityOutput()).then(() => setCopySuccess("Quantities copied!"), () =>
-      setCopySuccess("Failed to copy quantities")
-    );
-    setTimeout(() => setCopySuccess(""), 4000);
-  };
-
-  // --- SHARE CART VIA COMPACT URL ---
-  const shareCart = () => {
-    const encoded = encodeCart(quantities);
-    const link = `${window.location.origin}/?cart=${encoded}`;
-    try {
-      navigator.clipboard.writeText(link);
-    } catch {
-      const input = document.createElement("input");
-      document.body.appendChild(input);
-      input.value = link;
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
-    }
-    setCopySuccess("Cart link copied!");
     setTimeout(() => setCopySuccess(""), 4000);
   };
 
   return (
     <div style={{ minHeight: "100vh", padding: 20, maxWidth: 700, margin: "auto" }}>
-      <h1 style={{ textAlign: "center", marginBottom: 20 }}>Product Selection</h1>
+      <h1 style={{ textAlign: "center" }}>Product Selection</h1>
+
+      {/* DISCOUNT CONTROL */}
+      <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <label style={{ fontWeight: "bold" }}>Discount: {discount}%</label>
+        <input
+          type="range"
+          min="0"
+          max="90"
+          value={discount}
+          onChange={(e) => setDiscount(parseInt(e.target.value))}
+          style={{ width: "80%", marginTop: 10 }}
+        />
+        <button
+          onClick={() => setDiscount(0)}
+          style={{
+            backgroundColor: "#777",
+            color: "#fff",
+            border: "none",
+            borderRadius: 6,
+            padding: "6px 12px",
+            marginLeft: 10,
+            cursor: "pointer",
+          }}
+        >
+          Reset
+        </button>
+      </div>
 
       {Object.entries(productsData).map(([cat, items]) => (
         <div key={cat} style={{ marginBottom: 30 }}>
@@ -247,106 +180,139 @@ const App = () => {
               borderBottom: "1px solid #555",
               paddingBottom: 6,
               cursor: "pointer",
-              transition: "all 0.3s",
             }}
             onClick={() => toggleCollapse(cat)}
           >
             <h2 style={{ margin: 0 }}>{cat}</h2>
-            <span style={{
-              fontSize: 24,
-              display: "inline-block",
-              transition: "transform 0.3s",
-              transform: collapsed[cat] ? "rotate(90deg)" : "rotate(0deg)"
-            }}>▶️</span>
+            <span
+              style={{
+                fontSize: 24,
+                transform: collapsed[cat] ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "transform 0.3s",
+              }}
+            >
+              ▶️
+            </span>
           </div>
 
           {!collapsed[cat] && (
             <>
-              <button
-                onClick={(e) => { e.stopPropagation(); clearCategory(cat); }}
-                style={{
-                  backgroundColor: "#777",
-                  color: "#eee",
-                  border: "none",
-                  borderRadius: 6,
-                  padding: "6px 12px",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                  marginTop: 8,
-                  marginBottom: 12,
-                  transition: "background-color 0.2s",
-                }}
-                onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.backgroundColor = "#555")}
-                onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.backgroundColor = "#777")}
-              >
-                Clear Category
-              </button>
-
-              {items.map(({ name, price, image }) => (
-                <div
-                  key={name}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: 12,
-                    padding: 10,
-                    backgroundColor: "#1e1e1e",
-                    borderRadius: 6,
-                  }}
-                >
-                  <span style={{ flex: 1, fontWeight: "bold" }}>{name}</span>
-                  {image ? (
-                    <img src={image} alt={name} style={{ width: 60, height: 60, objectFit: "contain", marginRight: 10 }} />
-                  ) : (
-                    <span style={{ color: "#555", fontSize: 12, marginRight: 10 }}>No Image</span>
-                  )}
-                  <span style={{ width: 80, textAlign: "right", color: "#39FF14", fontWeight: "bold", flexShrink: 0, marginRight: 10 }}>
-                    ${price.toFixed(2)}
-                  </span>
-                  <input
-                    type="number"
-                    min={0}
-                    max={100}
-                    value={quantities[name] === 0 ? "" : quantities[name]}
-                    onChange={(e) => handleQuantityChange(name, parseInt(e.target.value) || 0)}
+              {items.map(({ name, price, image }) => {
+                const discountedPrice = price * (1 - discount / 100);
+                return (
+                  <div
+                    key={name}
                     style={{
-                      width: 60,
-                      borderRadius: 4,
-                      border: "none",
-                      padding: "6px 10px",
-                      fontSize: 14,
-                      textAlign: "center",
-                      backgroundColor: "#333",
-                      color: "#eee",
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: 12,
+                      padding: 10,
+                      backgroundColor: "#1e1e1e",
+                      borderRadius: 6,
                     }}
-                  />
-                </div>
-              ))}
+                  >
+                    <span style={{ flex: 1, fontWeight: "bold" }}>{name}</span>
+                    {image && (
+                      <img
+                        src={image}
+                        alt={name}
+                        style={{
+                          width: 60,
+                          height: 60,
+                          objectFit: "contain",
+                          marginRight: 10,
+                        }}
+                      />
+                    )}
+                    <div style={{ textAlign: "right", marginRight: 10 }}>
+                      <div style={{ textDecoration: discount ? "line-through" : "none", color: "#ccc" }}>
+                        ${price.toFixed(2)}
+                      </div>
+                      {discount > 0 && (
+                        <div style={{ color: "#39FF14", fontWeight: "bold" }}>
+                          ${discountedPrice.toFixed(2)}
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="number"
+                      min={0}
+                      max={100}
+                      value={quantities[name] === 0 ? "" : quantities[name]}
+                      onChange={(e) => handleQuantityChange(name, parseInt(e.target.value) || 0)}
+                      style={{
+                        width: 60,
+                        borderRadius: 4,
+                        border: "none",
+                        padding: "6px 10px",
+                        fontSize: 14,
+                        textAlign: "center",
+                        backgroundColor: "#333",
+                        color: "#eee",
+                      }}
+                    />
+                  </div>
+                );
+              })}
             </>
           )}
         </div>
       ))}
 
-      <div style={{ display: "flex", gap: 10, marginTop: 10, flexWrap: "wrap" }}>
-        <button onClick={handleCopy} style={{ flex: 1, padding: "12px 22px", fontSize: 16, fontWeight: "bold", border: "none", borderRadius: 6, backgroundColor: "#2979ff", color: "#fff", cursor: "pointer" }}>Copy Summary</button>
-        <button onClick={handleCopyQuantities} style={{ flex: 1, padding: "12px 22px", fontSize: 16, fontWeight: "bold", border: "none", borderRadius: 6, backgroundColor: "#2979ff", color: "#fff", cursor: "pointer" }}>Copy Quantities</button>
-        <button onClick={clearQuantities} style={{ flex: 1, padding: "12px 22px", fontSize: 16, fontWeight: "bold", border: "none", borderRadius: 6, backgroundColor: "#777", color: "#eee", cursor: "pointer" }}>Clear All</button>
-        <button onClick={shareCart} style={{ flex: 1, padding: "12px 22px", fontSize: 16, fontWeight: "bold", border: "none", borderRadius: 6, backgroundColor: "#ff5722", color: "#fff", cursor: "pointer" }}>Share Cart</button>
+      <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+        <button
+          onClick={handleCopy}
+          style={{
+            flex: 1,
+            padding: "12px 22px",
+            fontSize: 16,
+            fontWeight: "bold",
+            border: "none",
+            borderRadius: 6,
+            backgroundColor: "#2979ff",
+            color: "#fff",
+            cursor: "pointer",
+          }}
+        >
+          Copy Summary
+        </button>
+        <button
+          onClick={clearQuantities}
+          style={{
+            flex: 1,
+            padding: "12px 22px",
+            fontSize: 16,
+            fontWeight: "bold",
+            border: "none",
+            borderRadius: 6,
+            backgroundColor: "#777",
+            color: "#eee",
+            cursor: "pointer",
+          }}
+        >
+          Clear All
+        </button>
       </div>
 
-      {copySuccess && <div style={{ marginTop: 10, textAlign: "center", color: "#4caf50", fontWeight: "bold" }}>{copySuccess}</div>}
+      {copySuccess && (
+        <div style={{ marginTop: 10, textAlign: "center", color: "#4caf50", fontWeight: "bold" }}>{copySuccess}</div>
+      )}
 
       <textarea
         readOnly
         rows={12}
-        style={{ width: "100%", marginTop: 12, fontFamily: "monospace", borderRadius: 6, border: "none", padding: 12, backgroundColor: "#222", color: "#ddd", resize: "none" }}
+        style={{
+          width: "100%",
+          marginTop: 12,
+          fontFamily: "monospace",
+          borderRadius: 6,
+          border: "none",
+          padding: 12,
+          backgroundColor: "#222",
+          color: "#ddd",
+          resize: "none",
+        }}
         value={generateOutput()}
-      />
-      <textarea
-        readOnly
-        rows={12}
-        style={{ width: "100%", marginTop: 8, fontFamily: "monospace", borderRadius: 6, border: "none", padding: 12, backgroundColor: "#222", color: "#39FF14", resize: "none" }}
-        value={generateQuantityOutput()}
       />
     </div>
   );
